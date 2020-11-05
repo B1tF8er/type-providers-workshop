@@ -29,6 +29,8 @@ let main _ =
     | "g" -> rssFeeds |> get
     | "p" -> rssFeeds |> plot
     | "s" -> rssFeeds |> save
-    | _ -> printfn "Invalid user input allowed values are: (g) Get Feeds | (p) Plot Feeds | (s) Save Feeds"
+    | _ ->
+        printfn ""
+        printfn "Invalid user input allowed values are: (g) Get Feeds | (p) Plot Feeds | (s) Save Feeds"
 
     0
