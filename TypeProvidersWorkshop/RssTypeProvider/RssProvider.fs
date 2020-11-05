@@ -3,14 +3,13 @@
 open FSharp.Data
 
 let [<Literal>] private Url =
-    "http://feeds.feedburner.com/MetalUnderground"
+    @".\Resources\Sample_RSS_Feed.xml"
 
 type private RSS = XmlProvider<Url>
 
 let private separator () =
     printfn ""
-    [1 .. 100]
-    |> List.iter (fun _ -> printf "=")
+    [1 .. 100] |> List.iter (fun _ -> printf "=")
     printfn ""
 
 let getFeed (url : string) =
