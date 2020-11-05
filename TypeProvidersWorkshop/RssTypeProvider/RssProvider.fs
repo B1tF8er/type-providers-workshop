@@ -1,7 +1,6 @@
 ﻿module RssProvider
 
 open FSharp.Data
-open System.Linq
 open XPlot.GoogleCharts
 
 let [<Literal>] private Url =
