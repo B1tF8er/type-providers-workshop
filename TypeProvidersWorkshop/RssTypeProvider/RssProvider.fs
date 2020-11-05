@@ -30,5 +30,3 @@ let getFeed (url : string) =
         printfn "LINK %s" item.Link
         separator ()
     )
-
-    ()
