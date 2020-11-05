@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="RssProvider.fs" />
     <Compile Include="MetalInjectionRss.fs" />
     <Compile Include="MetalSucksRss.fs" />
     <Compile Include="MetalUndergroundRss.fs" />
