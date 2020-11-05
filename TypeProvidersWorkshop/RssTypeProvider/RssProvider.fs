@@ -12,6 +12,11 @@ let private separator () =
     [1 .. 100] |> List.iter (fun _ -> printf "=")
     printfn ""
 
+let private displayPost (item : RSS.Item) =
+    printfn "TITLE: %s" item.Title
+    printfn "LINK %s" item.Link
+    separator ()
+
 let getFeed (url : string) =
     let feed = RSS.Load(url)
     
@@ -25,8 +30,4 @@ let getFeed (url : string) =
 
     items
     |> List.ofArray
-    |> List.iter (fun item ->
-        printfn "TITLE: %s" item.Title
-        printfn "LINK %s" item.Link
-        separator ()
-    )
+    |> List.iter displayPost
