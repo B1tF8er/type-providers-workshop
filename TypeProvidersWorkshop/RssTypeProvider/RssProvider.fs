@@ -31,3 +31,17 @@ let getFeed (url : string) =
     items
     |> List.ofArray
     |> List.iter displayPost
+
+let plotFeed (url : string) =
+    let feed = RSS.Load(url)
+
+    // TODO: plot feed using XPlot.GoogleCharts
+
+    ()
+
+let saveFeed (url : string) =
+    let feed = RSS.Load(url)
+
+    // TODO: save feed to File System
+
+    ()

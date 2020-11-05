@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Content Include="Resources\Sample_RSS_Feed.xml" />
+    <Compile Include="Domain.fs" />
     <Compile Include="RssProvider.fs" />
     <Compile Include="MetalInjectionRss.fs" />
     <Compile Include="MetalSucksRss.fs" />
