@@ -1,17 +1,14 @@
 ﻿open Domain
 open System
 
-let get (rssFeeds : RssFeed list) =
-    rssFeeds
-    |> List.iter (fun rssFeed -> rssFeed.getFeed ())
+let private get rssFeed = rssFeed.getFeed ()
 
-let plot (rssFeeds : RssFeed list) =
-    rssFeeds
-    |> List.iter (fun rssFeed -> rssFeed.plotFeed ())
+let private plot rssFeed = rssFeed.plotFeed ()
 
-let save (rssFeeds : RssFeed list) =
-    rssFeeds
-    |> List.iter (fun rssFeed -> rssFeed.saveFeed ())
+let private save rssFeed = rssFeed.saveFeed ()
+
+let [<Literal>] UserActionErrorMessage =
+    "Invalid user action, allowed actions are: (g) Get Feeds | (p) Plot Feeds | (s) Save Feeds"
 
 [<EntryPoint>]
 let main _ =
@@ -23,14 +20,17 @@ let main _ =
         MetalUndergroundRss.create ()
     ]
 
-    let userInput = Console.ReadKey().ToString().ToLowerInvariant()
+    let userAction = Console.ReadKey().ToString().ToLowerInvariant()
 
-    match userInput with
-    | "g" -> rssFeeds |> get
-    | "p" -> rssFeeds |> plot
-    | "s" -> rssFeeds |> save
+    match userAction with
+    | "g" ->
+        rssFeeds |> List.iter get
+    | "p" ->
+        rssFeeds |> List.iter plot
+    | "s" ->
+        rssFeeds |> List.iter save
     | _ ->
         printfn ""
-        printfn "Invalid user input allowed values are: (g) Get Feeds | (p) Plot Feeds | (s) Save Feeds"
+        printfn "%s" UserActionErrorMessage
 
     0
