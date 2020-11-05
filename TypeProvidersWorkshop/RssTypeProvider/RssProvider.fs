@@ -41,6 +41,9 @@ let private tryGetComments (item : RSS.Item) =
     try item.Comments2
     with | _ -> 0
 
+let private toChart (item : RSS.Item) =
+    (item |> tryGetTitle, item |> tryGetComments)
+
 let plotFeed (url : string) =
     let feed = RSS.Load(url)
 
@@ -49,7 +52,7 @@ let plotFeed (url : string) =
 
     items
     |> Seq.ofArray
-    |> Seq.map (fun item -> (item |> tryGetTitle, item |> tryGetComments))
+    |> Seq.map toChart
     |> Seq.take 5
     |> Chart.Column
     |> Chart.Show
