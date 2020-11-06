@@ -2,6 +2,8 @@
 
 open Domain
 open XPlot.GoogleCharts
+open System
+open System.IO
 
 module Get =
     let private separator () =
@@ -43,6 +45,15 @@ module Plot =
 
 module Save =
     let run (feed : Feed) =
-        // TODO: save feed to File System
+        let directory = Path.Combine(Environment.CurrentDirectory, "RSS")
+        let title = sprintf "%s.txt" feed.Channel.Title
+        let fileName = Path.Combine(directory, title)
+        let items =
+            feed.Channel.Items
+            |> Seq.ofList
+            |> Seq.map (fun item -> item.Link)
 
-        ()
+        if not (directory |> Directory.Exists)
+        then Directory.CreateDirectory directory |> ignore
+
+        File.WriteAllLines(fileName, items)
