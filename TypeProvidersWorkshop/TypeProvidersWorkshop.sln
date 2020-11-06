@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RssTypeProvider", "RssTypeProvider\RssTypeProvider.fsproj", "{C85A2E0C-4B13-4E17-A945-3E1AFAE641CA}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "RssTypeProvider", "RssTypeProvider\RssTypeProvider.fsproj", "{C85A2E0C-4B13-4E17-A945-3E1AFAE641CA}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "JsonTypeProvider", "JsonTypeProvider\JsonTypeProvider.fsproj", "{8EBACE2A-09CE-43B8-8946-1BBC2AAA3983}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C85A2E0C-4B13-4E17-A945-3E1AFAE641CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C85A2E0C-4B13-4E17-A945-3E1AFAE641CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C85A2E0C-4B13-4E17-A945-3E1AFAE641CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EBACE2A-09CE-43B8-8946-1BBC2AAA3983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EBACE2A-09CE-43B8-8946-1BBC2AAA3983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EBACE2A-09CE-43B8-8946-1BBC2AAA3983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EBACE2A-09CE-43B8-8946-1BBC2AAA3983}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
