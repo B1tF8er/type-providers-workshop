@@ -2,7 +2,20 @@
 
 open FSharp.Data
 
-module private Urls =
+module private LocalUrls =
+    [<Literal>]
+    let Posts = @".\Resources\posts.json"
+
+    [<Literal>]
+    let Comments = @".\Resources\comments.json"
+
+    [<Literal>]
+    let Albums = @".\Resources\albums.json"
+
+    [<Literal>]
+    let Photos = @".\Resources\photos.json"
+
+module private WebUrls =
     [<Literal>]
     let Posts = "https://jsonplaceholder.typicode.com/posts"
 
@@ -16,13 +29,13 @@ module private Urls =
     let Photos = "https://jsonplaceholder.typicode.com/photos"
 
 module private Types =
-    type Posts = JsonProvider<Urls.Posts>
+    type Posts = JsonProvider<LocalUrls.Posts>
 
-    type Comments = JsonProvider<Urls.Comments>
+    type Comments = JsonProvider<LocalUrls.Comments>
 
-    type Albums = JsonProvider<Urls.Albums>
+    type Albums = JsonProvider<LocalUrls.Albums>
 
-    type Photos = JsonProvider<Urls.Photos>
+    type Photos = JsonProvider<LocalUrls.Photos>
 
 [<Literal>]
 let private N = 2
@@ -44,19 +57,19 @@ let private ``print five items`` =
     printFirst 5
 
 let private getPosts () =
-    Types.Posts.GetSamples()
+    Types.Posts.Load(WebUrls.Posts)
     |> ``print twenty items``
 
 let private getComments () =
-    Types.Comments.GetSamples()
+    Types.Comments.Load(WebUrls.Comments)
     |> ``print ten items``
 
 let private getAlbums () =
-    Types.Albums.GetSamples()
+    Types.Albums.Load(WebUrls.Albums)
     |> ``print five items``
 
 let private getPhotos () =
-    Types.Photos.GetSamples()
+    Types.Photos.Load(WebUrls.Photos)
     |> printFirst N
 
 let run () =
