@@ -1,9 +1,6 @@
 ﻿module RssOperations
 
 open Domain
-open XPlot.GoogleCharts
-open System
-open System.IO
 
 module Get =
     let private separator () =
@@ -16,7 +13,7 @@ module Get =
         printfn "LINK %s" item.Link
         separator ()
 
-    let run (feed : Feed) =
+    let exec (feed : Feed) =
         let channel = feed.Channel
         let title = channel.Title
         let items = channel.Items
@@ -29,10 +26,12 @@ module Get =
         |> List.iter displayPost
 
 module Plot =
+    open XPlot.GoogleCharts
+
     let private toChart (item : Item) =
         (item.Title, item.Comments)
 
-    let run (feed : Feed) =
+    let exec (feed : Feed) =
         let channel = feed.Channel
         let items = channel.Items
 
@@ -44,16 +43,32 @@ module Plot =
         |> Chart.Show
 
 module Save =
-    let run (feed : Feed) =
-        let directory = Path.Combine(Environment.CurrentDirectory, "RSS")
+    open System
+    open System.IO
+
+    let private rssDirectory =
+        Path.Combine(
+            Environment.CurrentDirectory,
+            DateTime.Now.ToShortDateString(),
+            "RSS"
+        )
+
+    let private tryCreateRssDirectory () =
+        if not (rssDirectory |> Directory.Exists) then
+            rssDirectory
+            |> Directory.CreateDirectory
+            |> ignore
+
+    let private writeLinksToFile (feed : Feed) =
         let title = sprintf "%s.txt" feed.Channel.Title
-        let fileName = Path.Combine(directory, title)
-        let items =
+        let fileName = Path.Combine(rssDirectory, title)
+        let links =
             feed.Channel.Items
             |> Seq.ofList
             |> Seq.map (fun item -> item.Link)
 
-        if not (directory |> Directory.Exists)
-        then Directory.CreateDirectory directory |> ignore
+        File.WriteAllLines(fileName, links)
 
-        File.WriteAllLines(fileName, items)
+    let exec (feed : Feed) =
+        () |> tryCreateRssDirectory
+        feed |> writeLinksToFile

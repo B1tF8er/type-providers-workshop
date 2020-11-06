@@ -34,10 +34,10 @@ let private loadRss (url : string) =
     RSS.Load(url) |> toFeed
 
 let get (url : string) =
-    url |> loadRss |> RssOperations.Get.run
+    url |> loadRss |> RssOperations.Get.exec
 
 let plot (url : string) =
-    url |> loadRss |> RssOperations.Plot.run
+    url |> loadRss |> RssOperations.Plot.exec
 
 let save (url : string) =
-    url |> loadRss |> RssOperations.Save.run
+    url |> loadRss |> RssOperations.Save.exec
