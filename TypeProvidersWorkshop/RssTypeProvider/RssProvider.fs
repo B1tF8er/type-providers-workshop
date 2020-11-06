@@ -1,37 +1,11 @@
 ﻿module RssProvider
 
+open Domain
 open FSharp.Data
-open XPlot.GoogleCharts
 
-let [<Literal>] private Url =
-    @".\Resources\Sample_RSS_Feed.xml"
+let [<Literal>] private Url = @".\Resources\Sample_RSS_Feed.xml"
 
 type private RSS = XmlProvider<Url>
-
-let private separator () =
-    printfn ""
-    [1 .. 100] |> List.iter (fun _ -> printf "=")
-    printfn ""
-
-let private displayPost (item : RSS.Item) =
-    printfn "TITLE: %s" item.Title
-    printfn "LINK %s" item.Link
-    separator ()
-
-let getFeed (url : string) =
-    let feed = RSS.Load(url)
-    
-    let channel = feed.Channel
-    let title = channel.Title
-    let items = channel.Items
-
-    separator ()
-    printfn "SITE: %s" title
-    separator ()
-
-    items
-    |> List.ofArray
-    |> List.iter displayPost
 
 let private tryGetTitle (item : RSS.Item) = 
     try item.Title.Substring(0, 5)
@@ -41,25 +15,29 @@ let private tryGetComments (item : RSS.Item) =
     try item.Comments2
     with | _ -> 0
 
-let private toChart (item : RSS.Item) =
-    (item |> tryGetTitle, item |> tryGetComments)
+let private toFeed (rss : RSS.Rss) =
+    {
+        Channel = {
+             Title = rss.Channel.Title
+             Items =
+                 rss.Channel.Items
+                 |> Array.map (fun item -> {
+                     Title = item |> tryGetTitle
+                     Link = item.Link
+                     Comments = item |> tryGetComments
+                 })
+                 |> List.ofArray
+        }
+     }
 
-let plotFeed (url : string) =
-    let feed = RSS.Load(url)
+let private loadRss (url : string) =
+    RSS.Load(url) |> toFeed
 
-    let channel = feed.Channel
-    let items = channel.Items
+let get (url : string) =
+    url |> loadRss |> RssOperations.Get.run
 
-    items
-    |> Seq.ofArray
-    |> Seq.map toChart
-    |> Seq.take 5
-    |> Chart.Column
-    |> Chart.Show
+let plot (url : string) =
+    url |> loadRss |> RssOperations.Plot.run
 
-let saveFeed (url : string) =
-    let feed = RSS.Load(url)
-
-    // TODO: save feed to File System
-
-    ()
+let save (url : string) =
+    url |> loadRss |> RssOperations.Save.run

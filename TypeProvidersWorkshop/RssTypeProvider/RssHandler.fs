@@ -9,18 +9,6 @@ let private rssFeeds = [
     MetalUndergroundRss.create ()
 ]
 
-let private get rssFeed =
-    rssFeed.getFeed ()
-
-let private plot rssFeed =
-    rssFeed.plotFeed ()
-
-let private save rssFeed =
-    rssFeed.saveFeed ()
-
-let private readUserAction () =
-    Console.ReadKey().KeyChar
-
 let private printAllowedActions () =
     printfn ""
     printfn "Allowed actions are:"
@@ -29,30 +17,30 @@ let private printAllowedActions () =
     printfn "(s) - Save Feeds"
     printfn "(e) - Exit"
 
+let private printAction message =
+    printfn ""
+    printfn message
+
 let private printUserActionErrorMessage () =
     printfn ""
     printfn ""
     printfn "Invalid user action"
 
-let private printAction message =
-    printfn ""
-    printfn message
-
 let private ask () =
     printAllowedActions ()
 
-    match readUserAction () with
+    match Console.ReadKey().KeyChar with
     | 'g' ->
         printAction "Getting Feeds..."
-        rssFeeds |> List.iter get
+        rssFeeds |> List.iter (fun rssFeed -> rssFeed.get ())
         true
     | 'p' ->
         printAction "Plotting Feeds..."
-        rssFeeds |> List.iter plot
+        rssFeeds |> List.iter (fun rssFeed -> rssFeed.plot ())
         true
     | 's' ->
         printAction "Savings Feeds..."
-        rssFeeds |> List.iter save
+        rssFeeds |> List.iter (fun rssFeed -> rssFeed.save ())
         true
     | 'e' ->
         false
