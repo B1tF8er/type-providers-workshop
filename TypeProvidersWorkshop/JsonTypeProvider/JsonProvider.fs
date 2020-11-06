@@ -2,40 +2,14 @@
 
 open FSharp.Data
 
-module private LocalUrls =
-    [<Literal>]
-    let Posts = @".\Resources\posts.json"
-
-    [<Literal>]
-    let Comments = @".\Resources\comments.json"
-
-    [<Literal>]
-    let Albums = @".\Resources\albums.json"
-
-    [<Literal>]
-    let Photos = @".\Resources\photos.json"
-
-module private WebUrls =
-    [<Literal>]
-    let Posts = "https://jsonplaceholder.typicode.com/posts"
-
-    [<Literal>]
-    let Comments = "https://jsonplaceholder.typicode.com/comments"
-
-    [<Literal>]
-    let Albums = "https://jsonplaceholder.typicode.com/albums"
-
-    [<Literal>]
-    let Photos = "https://jsonplaceholder.typicode.com/photos"
-
 module private Types =
-    type Posts = JsonProvider<LocalUrls.Posts>
+    type Posts = JsonProvider<Urls.Local.Posts>
 
-    type Comments = JsonProvider<LocalUrls.Comments>
+    type Comments = JsonProvider<Urls.Local.Comments>
 
-    type Albums = JsonProvider<LocalUrls.Albums>
+    type Albums = JsonProvider<Urls.Local.Albums>
 
-    type Photos = JsonProvider<LocalUrls.Photos>
+    type Photos = JsonProvider<Urls.Local.Photos>
 
 [<Literal>]
 let private N = 2
@@ -57,19 +31,19 @@ let private ``print five items`` =
     printFirst 5
 
 let private getPosts () =
-    Types.Posts.Load(WebUrls.Posts)
+    Types.Posts.Load(Urls.Web.Posts)
     |> ``print twenty items``
 
 let private getComments () =
-    Types.Comments.Load(WebUrls.Comments)
+    Types.Comments.Load(Urls.Web.Comments)
     |> ``print ten items``
 
 let private getAlbums () =
-    Types.Albums.Load(WebUrls.Albums)
+    Types.Albums.Load(Urls.Web.Albums)
     |> ``print five items``
 
 let private getPhotos () =
-    Types.Photos.Load(WebUrls.Photos)
+    Types.Photos.Load(Urls.Web.Photos)
     |> printFirst N
 
 let run () =
