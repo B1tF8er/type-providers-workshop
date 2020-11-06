@@ -3,17 +3,17 @@
 open FSharp.Data
 
 module private Urls =
-    let [<Literal>] Posts =
-        "https://jsonplaceholder.typicode.com/posts"
+    [<Literal>]
+    let Posts = "https://jsonplaceholder.typicode.com/posts"
 
-    let [<Literal>] Comments =
-        "https://jsonplaceholder.typicode.com/comments"
+    [<Literal>]
+    let Comments = "https://jsonplaceholder.typicode.com/comments"
 
-    let [<Literal>] Albums =
-        "https://jsonplaceholder.typicode.com/albums"
+    [<Literal>]
+    let Albums = "https://jsonplaceholder.typicode.com/albums"
 
-    let [<Literal>] Photos =
-        "https://jsonplaceholder.typicode.com/photos"
+    [<Literal>]
+    let Photos = "https://jsonplaceholder.typicode.com/photos"
 
 module private Types =
     type Posts = JsonProvider<Urls.Posts>
@@ -24,28 +24,40 @@ module private Types =
 
     type Photos = JsonProvider<Urls.Photos>
 
-let private print item =
-    printfn "%A" item
+[<Literal>]
+let private N = 2
+
+let private print item = printfn "%A" item
+
+let private printFirst n items =
+    items
+    |> Array.take n
+    |> Array.iter print
+
+let private ``print twenty items`` =
+    printFirst 20
+
+let private ``print ten items`` =
+    printFirst 10
+
+let private ``print five items`` =
+    printFirst 5
 
 let private getPosts () =
     Types.Posts.GetSamples()
-    |> Array.take 2
-    |> Array.iter print
+    |> ``print twenty items``
 
 let private getComments () =
     Types.Comments.GetSamples()
-    |> Array.take 2
-    |> Array.iter print
+    |> ``print ten items``
 
 let private getAlbums () =
     Types.Albums.GetSamples()
-    |> Array.take 2
-    |> Array.iter print
+    |> ``print five items``
 
 let private getPhotos () =
     Types.Photos.GetSamples()
-    |> Array.take 2
-    |> Array.iter print
+    |> printFirst N
 
 let run () =
     getPosts ()
