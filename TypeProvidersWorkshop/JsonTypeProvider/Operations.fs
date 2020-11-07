@@ -1,21 +1,45 @@
 ﻿module Operations
 
-let private print item =
-    printfn "%A" item
+module Print =
+    let private print item =
+        printfn "%A" item
+    
+    let first n items =
+        items
+        |> Array.take n
+        |> Array.iter print
+    
+    let ``first twenty`` items =
+        items
+        |> first 20
+    
+    let ``first ten`` items =
+        items
+        |> first 10
+    
+    let ``first five`` items =
+        items
+        |> first 5
 
-let printFirst n items =
-    items
-    |> Array.take n
-    |> Array.iter print
+module Plot =
+    open XPlot.GoogleCharts
 
-let ``print twenty`` items =
-    items
-    |> printFirst 20
+    let totalPostsPerUser (items : (int * int) seq) =
+        items
+        |> Chart.Column
+        |> Chart.Show
 
-let ``print ten`` items =
-    items
-    |> printFirst 10
+    let totalCommentsPerPost (items : (int * int) seq) =
+        items
+        |> Chart.Line
+        |> Chart.Show
 
-let ``print five`` items =
-    items
-    |> printFirst 5
+    let totalAlbumsPerUser (items : (int * int) seq) =
+        items
+        |> Chart.Bar
+        |> Chart.Show
+
+    let photos (items : (string * int * int) seq) =
+        items
+        |> Chart.Bubble
+        |> Chart.Show
