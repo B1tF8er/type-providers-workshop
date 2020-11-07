@@ -39,7 +39,7 @@ module Plot =
         |> Chart.Bar
         |> Chart.Show
 
-    let photos (items : (string * int * int) seq) =
+    let photosPerAlbum (items : (string * int * int) seq) =
         items
         |> Chart.Bubble
         |> Chart.Show

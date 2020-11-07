@@ -27,8 +27,8 @@ let print () =
 
 let plot () =
     let random () =
-        let r = new Random()
-        r.Next()
+        let random = new Random()
+        random.Next()
 
     Types.Posts.Load(Urls.Web.Posts)
     |> Seq.ofArray
@@ -52,7 +52,7 @@ let plot () =
     |> Seq.ofArray
     |> Seq.groupBy (fun photo -> photo.AlbumId)
     |> Seq.map (fun group -> (group |> fst |> string, random (), random ()))
-    |> Operations.Plot.photos
+    |> Operations.Plot.photosPerAlbum
 
 let run () =
     print ()
