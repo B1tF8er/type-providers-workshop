@@ -7,7 +7,9 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "RssTypeProvider", "RssTypeP
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "JsonTypeProvider", "JsonTypeProvider\JsonTypeProvider.fsproj", "{8EBACE2A-09CE-43B8-8946-1BBC2AAA3983}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CsvTypeProvider", "CsvTypeProvider\CsvTypeProvider.fsproj", "{695A54F3-4C2B-4D64-BE0D-B52A013AD4E1}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "CsvTypeProvider", "CsvTypeProvider\CsvTypeProvider.fsproj", "{695A54F3-4C2B-4D64-BE0D-B52A013AD4E1}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HtmlProvider", "HtmlProvider\HtmlProvider.fsproj", "{636C20DA-D848-4B58-9105-93AC764533DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{695A54F3-4C2B-4D64-BE0D-B52A013AD4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{695A54F3-4C2B-4D64-BE0D-B52A013AD4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{695A54F3-4C2B-4D64-BE0D-B52A013AD4E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{636C20DA-D848-4B58-9105-93AC764533DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{636C20DA-D848-4B58-9105-93AC764533DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{636C20DA-D848-4B58-9105-93AC764533DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{636C20DA-D848-4B58-9105-93AC764533DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
