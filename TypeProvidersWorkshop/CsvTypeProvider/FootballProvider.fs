@@ -1,4 +1,4 @@
-﻿module CsvProvider
+﻿module FootballProvider
 
 open FSharp.Data
 open XPlot.GoogleCharts

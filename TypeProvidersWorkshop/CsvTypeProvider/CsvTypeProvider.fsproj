@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <Content Include="Resources\FootballResults.csv" />
-    <Compile Include="CsvProvider.fs" />
+    <Compile Include="FootballProvider.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
