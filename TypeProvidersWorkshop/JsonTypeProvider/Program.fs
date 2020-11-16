@@ -1,5 +1,5 @@
 ﻿[<EntryPoint>]
 let main _ =
     printfn "JSON TYPE PROVIDERS WITH F#!"
-    JsonProvider.run ()
+    JsonPlaceholderProvider.run ()
     0

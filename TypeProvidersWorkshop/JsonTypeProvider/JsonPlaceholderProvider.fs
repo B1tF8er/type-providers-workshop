@@ -1,4 +1,4 @@
-﻿module JsonProvider
+﻿module JsonPlaceholderProvider
 
 open FSharp.Data
 open System

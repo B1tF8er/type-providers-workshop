@@ -12,7 +12,7 @@
     <Content Include="Resources\posts.json" />
     <Compile Include="Operations.fs" />
     <Compile Include="Urls.fs" />
-    <Compile Include="JsonProvider.fs" />
+    <Compile Include="JsonPlaceholderProvider.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
