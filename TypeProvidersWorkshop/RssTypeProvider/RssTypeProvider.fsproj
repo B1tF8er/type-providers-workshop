@@ -6,9 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="MetalInjectionRss.fs" />
-    <Compile Include="MetalSucksRss.fs" />
-    <Compile Include="MetalUndergroundRss.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
