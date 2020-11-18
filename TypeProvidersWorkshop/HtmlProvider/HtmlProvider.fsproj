@@ -8,6 +8,7 @@
   <ItemGroup>
     <Content Include="Resources\Sample.html" />
     <Compile Include="NugetProvider.fs" />
+    <Compile Include="QueenTypeProvider.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
