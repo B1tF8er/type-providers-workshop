@@ -6,14 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Resources\Sample_RSS_Feed.xml" />
+    <Content Include="Resources\albums.json" />
+    <Content Include="Resources\comments.json" />
+    <Content Include="Resources\photos.json" />
+    <Content Include="Resources\posts.json" />
     <Compile Include="Domain.fs" />
-    <Compile Include="RssOperations.fs" />
-    <Compile Include="RssProvider.fs" />
-    <Compile Include="MetalInjectionRss.fs" />
-    <Compile Include="MetalSucksRss.fs" />
-    <Compile Include="MetalUndergroundRss.fs" />
-    <Compile Include="RssHandler.fs" />
+    <Compile Include="AuthorsProvider.fs" />
+    <Compile Include="BooksProvider.fs" />
+    <Compile Include="Operations.fs" />
+    <Compile Include="Urls.fs" />
+    <Compile Include="JsonPlaceholderProvider.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

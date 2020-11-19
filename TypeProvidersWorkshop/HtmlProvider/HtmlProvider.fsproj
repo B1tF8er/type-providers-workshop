@@ -6,14 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Resources\Sample_RSS_Feed.xml" />
-    <Compile Include="Domain.fs" />
-    <Compile Include="RssOperations.fs" />
-    <Compile Include="RssProvider.fs" />
-    <Compile Include="MetalInjectionRss.fs" />
-    <Compile Include="MetalSucksRss.fs" />
-    <Compile Include="MetalUndergroundRss.fs" />
-    <Compile Include="RssHandler.fs" />
+    <Compile Include="NugetProvider.fs" />
+    <Compile Include="QueenTypeProvider.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
