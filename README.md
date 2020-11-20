@@ -6,7 +6,7 @@ using the nuget package `FSharp.Data`
 
 ## Type Provider Examples ##
 
-- [CSV ](.\TypeProvidersWorkshop\CsvTypeProvider)
-- [HTML](.\TypeProvidersWorkshop\HtmlProvider)
-- [JSON](.\TypeProvidersWorkshop\JsonTypeProvider)
-- [RSS ](.\TypeProvidersWorkshop\RssTypeProvider)
+- [CSV ](https://github.com/B1tF8er/type-providers-workshop/tree/master/TypeProvidersWorkshop/CsvTypeProvider)
+- [HTML](https://github.com/B1tF8er/type-providers-workshop/tree/master/TypeProvidersWorkshop/HtmlProvider)
+- [JSON](https://github.com/B1tF8er/type-providers-workshop/tree/master/TypeProvidersWorkshop/JsonTypeProvider)
+- [RSS ](https://github.com/B1tF8er/type-providers-workshop/tree/master/TypeProvidersWorkshop/RssTypeProvider)
