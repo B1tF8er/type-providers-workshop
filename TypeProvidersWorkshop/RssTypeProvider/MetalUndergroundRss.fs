@@ -4,8 +4,8 @@ open Domain
 
 let [<Literal>] private Url =
     "http://feeds.feedburner.com/MetalUnderground"
-    
-let create () =
+
+let create =
     {
         get = fun () -> Url |> RssProvider.get
         plot = fun () -> Url |> RssProvider.plot
