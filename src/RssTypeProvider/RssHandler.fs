@@ -29,22 +29,18 @@ let private printUserActionErrorMessage () =
     printfn "Invalid user action"
     true
 
+let private runAction message action =
+    message |> printAction
+    urls |> List.iter action
+    true
+
 let private ask () =
     printAllowedActions ()
 
     match Console.ReadKey().KeyChar with
-    | 'g' ->
-        printAction "Getting Feeds..."
-        urls |> List.iter RssProvider.get
-        true
-    | 'p' ->
-        printAction "Plotting Feeds..."
-        urls |> List.iter RssProvider.plot
-        true
-    | 's' ->
-        printAction "Saving Feeds..."
-        urls |> List.iter RssProvider.save
-        true
+    | 'g' -> RssProvider.get |> runAction "Getting Feeds..."
+    | 'p' -> RssProvider.plot |> runAction "Plotting Feeds..."
+    | 's' -> RssProvider.save |> runAction "Saving Feeds..."
     | 'e' -> false
     | _ -> printUserActionErrorMessage ()
 
