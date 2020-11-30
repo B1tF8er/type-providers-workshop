@@ -8,7 +8,7 @@ let [<Literal>] private Url = @".\Resources\Sample_RSS_Feed.xml"
 type private RSS = XmlProvider<Url>
 
 let private tryGetTitle (item : RSS.Item) = 
-    try item.Title.Substring(0, 5)
+    try item.Title
     with | _ -> "N/A"
 
 let private tryGetComments (item : RSS.Item) = 

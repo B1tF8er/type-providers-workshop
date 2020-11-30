@@ -29,7 +29,7 @@ module Plot =
     open XPlot.GoogleCharts
 
     let private toChart (item : Item) =
-        (item.Title, item.Comments)
+        (item.Title.Substring(0, 5), item.Comments)
 
     let exec (feed : Feed) =
         let channel = feed.Channel

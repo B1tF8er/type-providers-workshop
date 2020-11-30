@@ -1,12 +1,5 @@
 ﻿module Domain
 
-type RssFeed =
-    {
-        get : unit -> unit
-        plot : unit -> unit
-        save : unit -> unit
-    }
-
 type Item =
     {
         Title : string

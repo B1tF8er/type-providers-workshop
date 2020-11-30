@@ -10,9 +10,6 @@
     <Compile Include="Domain.fs" />
     <Compile Include="RssOperations.fs" />
     <Compile Include="RssProvider.fs" />
-    <Compile Include="MetalInjectionRss.fs" />
-    <Compile Include="MetalSucksRss.fs" />
-    <Compile Include="MetalUndergroundRss.fs" />
     <Compile Include="RssHandler.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

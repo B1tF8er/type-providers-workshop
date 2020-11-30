@@ -1,12 +1,14 @@
 ﻿module RssHandler
 
-open Domain
 open System
 
-let private rssFeeds = [
-    MetalInjectionRss.create
-    MetalSucksRss.create
-    MetalUndergroundRss.create
+[<Literal>]
+let private BaseUrl = "http://feeds.feedburner.com/"
+
+let private urls = [
+    sprintf "%sMetalInjection" BaseUrl
+    sprintf "%sMetalSucks" BaseUrl
+    sprintf "%sMetalUnderground" BaseUrl
 ]
 
 let private printAllowedActions () =
@@ -27,27 +29,22 @@ let private printUserActionErrorMessage () =
     printfn "Invalid user action"
     true
 
-let private get rssFeed =
-    () |> rssFeed.get
-
-let private plot rssFeed =
-    () |> rssFeed.plot
-
-let private save rssFeed =
-    () |> rssFeed.save
-
-let private run action =
-    printAction "Executing Action on Feeds..."
-    rssFeeds |> List.iter action
-    true
-
 let private ask () =
     printAllowedActions ()
 
     match Console.ReadKey().KeyChar with
-    | 'g' -> get |> run
-    | 'p' -> plot |> run
-    | 's' -> save |> run
+    | 'g' ->
+        printAction "Getting Feeds..."
+        urls |> List.iter RssProvider.get
+        true
+    | 'p' ->
+        printAction "Plotting Feeds..."
+        urls |> List.iter RssProvider.plot
+        true
+    | 's' ->
+        printAction "Saving Feeds..."
+        urls |> List.iter RssProvider.save
+        true
     | 'e' -> false
     | _ -> printUserActionErrorMessage ()
 
