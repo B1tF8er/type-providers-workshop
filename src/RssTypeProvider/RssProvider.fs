@@ -30,14 +30,10 @@ let private toFeed (rss : RSS.Rss) =
         }
      }
 
-let private loadRss (url : string) =
-    RSS.Load(url) |> toFeed
+let private loadRss (url : string) = RSS.Load(url) |> toFeed
 
-let get (url : string) =
-    url |> loadRss |> RssOperations.Get.exec
+let get = loadRss >> RssOperations.get
 
-let plot (url : string) =
-    url |> loadRss |> RssOperations.Plot.exec
+let plot = loadRss >> RssOperations.plot
 
-let save (url : string) =
-    url |> loadRss |> RssOperations.Save.exec
+let save = loadRss >> RssOperations.save
